@@ -381,39 +381,39 @@ B=C); */
 function exercicio15() {
     let A = Number(prompt("Digite um numero"))
 
-    if(!A){
+    if (!A) {
         alert("Valor inserido invalido. Tente novamente!")
         return;
     }
 
     let B = Number(prompt("Digite um numero"))
 
-    if(!B){
+    if (!B) {
         alert("Valor inserido invalido. Tente novamente!")
         return;
     }
 
     let C = Number(prompt("Digite um numero"))
 
-    if(!C){
+    if (!C) {
         alert("Valor inserido invalido. Tente novamente!")
         return;
     }
 
     if (A < B + C && B < A + C && C < A + B) {
 
-            if (A == B && B == C) {
-                document.write("Triângulo equilátero.")
-            }
-            else if (A === B || A === C || B === C) {
-                document.write("Triângulo isósceles.")
-            } 
-            else if (A !== B && B !== C && A !== C) {
-                document.write("Triângulo escaleno.")
-            }
-        } else {
+        if (A == B && B == C) {
+            document.write("Triângulo equilátero.")
+        }
+        else if (A === B || A === C || B === C) {
+            document.write("Triângulo isósceles.")
+        }
+        else if (A !== B && B !== C && A !== C) {
+            document.write("Triângulo escaleno.")
+        }
+    } else {
         alert("O valor digitado não é um triangulo")
-    } 
+    }
 }
 
 /* 16. Escreva um algoritmo que armazene o ano atual e o ano de
@@ -423,19 +423,19 @@ considerar o mês em que a pessoa nasceu). */
 
 function exercicio16() {
     let anoAtual = Number(prompt("Digite o ano atual: "))
-    if(!anoAtual){
+    if (!anoAtual) {
         alert("Valor invalido. Tente novamente!");
         return;
     }
 
     let anoNascimento = Number(prompt("Digite o ano do seu nascimento: "))
-    if(!anoNascimento){
+    if (!anoNascimento) {
         alert("Valor invalido. Tente novamente!");
         return;
     }
 
     let idade = anoAtual - anoNascimento;
-    if(idade < 18){
+    if (idade < 18) {
         document.write("Você é menor de idade, não pode votar!")
     } else if (idade <= 65) {
         document.write("Você é maior de idade, é obrigatorio votar!")
@@ -455,25 +455,25 @@ número total de eleitores. */
 
 function exercicio17() {
     let numeroTotalEleitores = Number(prompt("Digite o numero total de eleitores: "))
-    if(!numeroTotalEleitores){
+    if (!numeroTotalEleitores) {
         alert("Digite um numero de eleitores valido")
         return;
     }
 
     let numeroVotosBrancos = Number(prompt("Digite o numero de votos brancos: "))
-    if(!numeroVotosBrancos || numeroVotosBrancos > numeroTotalEleitores){
+    if (!numeroVotosBrancos || numeroVotosBrancos > numeroTotalEleitores) {
         alert("Digite um numero de votos valido")
         return;
     }
 
     let numeroVotosNulos = Number(prompt("Digite o numero de votos nulos: "))
-    if(!numeroVotosNulos || (numeroVotosNulos + numeroVotosBrancos) > numeroTotalEleitores){
+    if (!numeroVotosNulos || (numeroVotosNulos + numeroVotosBrancos) > numeroTotalEleitores) {
         alert("Digite um numero de votos valido")
         return;
     }
 
     let numeroVotosValidos = Number(prompt("Digite um numero de votos válidos: "))
-    if(!numeroVotosValidos || (numeroVotosBrancos + numeroVotosNulos + numeroVotosValidos) < numeroTotalEleitores){
+    if (!numeroVotosValidos || (numeroVotosBrancos + numeroVotosNulos + numeroVotosValidos) < numeroTotalEleitores) {
         alert("Digite um numero de votos valido e correspondente ao total de votos do municipio!")
         return;
     }
@@ -500,25 +500,44 @@ de vezes em que o pagamento será feito. Calcule o valor de cada
 parcela e o preço total da compra e imprima no console. */
 
 function exercicio18() {
-    let preçoTabela = prompt("Digite o preço do produto: ")
+    let total = 0;
+    let totalParcial = 0;
+    let precoTabela = prompt("Digite o preço do produto: ")
 
-    if(preçoTabela !== null) {
-        preçoTabela = Number(preçoTabela.replace(',', '.'))
+    if (precoTabela !== null) {
+        precoTabela = Number(precoTabela.replace(',', '.'))
     }
-    if(!preçoTabela) {
+    if (!precoTabela) {
         alert("Digite um valor valido!")
         return;
     }
 
-    let preçoVezes = Number(prompt("Digite em quantas vezes o pagamento sera feito: "))
+    let precoVezes = Number(prompt("Digite em quantas vezes o pagamento sera feito: "))
 
-    if(!preçoVezes) {
+    if (!precoVezes) {
         alert("Digite um valor valido!")
         return;
     }
 
-    let parcelas = preçoTabela / preçoVezes;
+    if (precoVezes === 1) {
+        total = precoTabela - (2.5 / 100) * precoTabela;
+        totalParcial = total
+    } else if (precoVezes >= 2 && precoVezes <= 5) {
+        total = precoTabela;
+        totalParcial = total / precoVezes;
 
-    document.write(`O valor total da compra é R$${preçoTabela.toFixed(2)} reais <br>`)
-    document.write(`A forma de pagamento sera em ${preçoVezes} de R$${parcelas.toFixed(2)} reais.`)
+    } else if (precoVezes >= 6 && precoVezes <= 10) {
+        total = precoTabela + (6 / 100) * preço;
+        totalParcial = total / precoVezes;
+
+    } else if (precoVezes >= 11 && precoVezes <= 15) {
+        total = precoTabela + (13 / 100) * precoTabela;
+        totalParcial = total / precoVezes
+    } else {
+        alert("Quantidade de parcela invalidas!")
+        return;
+    }
+    document.write(`O total da compra foi R$${total.toFixed(2)} reais, foi feita em ${precoVezes}x 
+    de R$${totalParcial.toFixed(2)} reais!`)
+
 }
